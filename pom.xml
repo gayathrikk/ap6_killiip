@@ -76,7 +76,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
           <configuration>
-            <test>com.test.Database_Testing.apollo2_currentdate_login</test>
+            <test>com.test.Database_Testing.public_currentdate_login</test>
           </configuration>
         </plugin>
       </plugins>
