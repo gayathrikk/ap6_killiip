@@ -1,13 +1,12 @@
 package com.test.Database_Testing;
-import java.sql.*;
 
+import java.sql.*;
 
 import org.junit.Test;
 
-public class public_currentdate_login {
+public class colab_HD_currentdate_login {
+	 Connection connection = null;
 	
-    Connection connection = null;
-
     @Test
     public void run() throws SQLException, ClassNotFoundException
     {
@@ -19,7 +18,7 @@ public class public_currentdate_login {
             statement = connection.createStatement();
             ResultSet resultSet;
             resultSet = statement.executeQuery(
-                "SELECT activity.user,CC_User.user_name,activity.timestamp FROM activity inner join CC_User on activity.user=CC_User.id where action=\"login\" and timestamp>=curdate()*1000000");
+                "SELECT activity.user,CC_User.user_name,activity.timestamp FROM HBA_V2.activity inner join HBA_V2.CC_User on activity.user=CC_User.id where action=\"High Resolution\" and timestamp>=curdate()*1000000");
             String user;
             int userid;
             String time;
@@ -30,11 +29,12 @@ public class public_currentdate_login {
                 userid = resultSet.getInt("user");
                 user = resultSet.getString("user_name").trim();
                 time = resultSet.getString("timestamp").trim();
-                System.out.printf(format, userid, user, "HD Viewer", time);
+                System.out.printf(format, userid, user, "login", time);
             }
             resultSet.close();
             statement.close();
             connection.close();
     }
+
 
 }
