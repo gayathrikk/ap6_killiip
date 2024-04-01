@@ -20,7 +20,7 @@ public void run() throws SQLException, ClassNotFoundException {
     statement = connection.createStatement();
     ResultSet resultSet;
     resultSet = statement.executeQuery(
-            "SELECT activity.user,CC_User.user_name,activity.timestamp FROM activity inner join CC_User on activity.user=CC_User.id where action=\"login\"");
+            "SELECT activity.user,CC_User.user_name,activity.timestamp FROM activity inner join CC_User on activity.user=CC_User.id where action=\"login\"and timestamp>=curdate()*1000000");
     String user;
     int userid;
     String time;

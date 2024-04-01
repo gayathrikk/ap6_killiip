@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-13T13:13:13 IST" name="Default suite" finished-at="2024-03-13T13:13:14 IST" duration-ms="999">
+  <suite started-at="2024-04-01T13:01:27 IST" name="Default suite" finished-at="2024-04-01T13:01:27 IST" duration-ms="454">
     <groups>
     </groups>
-    <test started-at="2024-03-13T13:13:13 IST" name="Default test" finished-at="2024-03-13T13:13:14 IST" duration-ms="999">
-      <class name="com.test.Database_Testing.Section_WidthHeight">
-        <test-method signature="testDB()[pri:0, instance:com.test.Database_Testing.Section_WidthHeight@56cdfb3b]" started-at="2024-03-13T13:13:13 IST" name="testDB" finished-at="2024-03-13T13:13:14 IST" duration-ms="969" status="PASS">
+    <test started-at="2024-04-01T13:01:27 IST" name="Default test" finished-at="2024-04-01T13:01:27 IST" duration-ms="454">
+      <class name="com.test.Database_Testing.Search_History_Today">
+        <test-method signature="testDB()[pri:0, instance:com.test.Database_Testing.Search_History_Today@56cdfb3b]" started-at="2024-04-01T13:01:27 IST" name="testDB" finished-at="2024-04-01T13:01:27 IST" duration-ms="428" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDB -->
-      </class> <!-- com.test.Database_Testing.Section_WidthHeight -->
+      </class> <!-- com.test.Database_Testing.Search_History_Today -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
