@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-01T13:01:27 IST" name="Default suite" finished-at="2024-04-01T13:01:27 IST" duration-ms="454">
+  <suite started-at="2024-05-09T15:01:33 IST" name="Default suite" finished-at="2024-05-09T15:01:33 IST" duration-ms="498">
     <groups>
     </groups>
-    <test started-at="2024-04-01T13:01:27 IST" name="Default test" finished-at="2024-04-01T13:01:27 IST" duration-ms="454">
-      <class name="com.test.Database_Testing.Search_History_Today">
-        <test-method signature="testDB()[pri:0, instance:com.test.Database_Testing.Search_History_Today@56cdfb3b]" started-at="2024-04-01T13:01:27 IST" name="testDB" finished-at="2024-04-01T13:01:27 IST" duration-ms="428" status="PASS">
+    <test started-at="2024-05-09T15:01:33 IST" name="Default test" finished-at="2024-05-09T15:01:33 IST" duration-ms="498">
+      <class name="com.test.Database_Testing.QC_Pending_Batches">
+        <test-method signature="testDB()[pri:0, instance:com.test.Database_Testing.QC_Pending_Batches@56cdfb3b]" started-at="2024-05-09T15:01:33 IST" name="testDB" finished-at="2024-05-09T15:01:33 IST" duration-ms="469" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDB -->
-      </class> <!-- com.test.Database_Testing.Search_History_Today -->
+      </class> <!-- com.test.Database_Testing.QC_Pending_Batches -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
