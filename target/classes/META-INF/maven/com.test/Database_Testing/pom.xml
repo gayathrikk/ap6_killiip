@@ -58,6 +58,11 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.26</version> 
     </dependency>
+    <dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version>
+</dependency>
 
 </dependencies>
 
@@ -76,7 +81,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
           <configuration>
-            <test>com.test.Database_Testing.Upload_Completed</test>
+            <test>com.test.Database_Testing.QC_Pending_Batches</test>
           </configuration>
         </plugin>
       </plugins>
