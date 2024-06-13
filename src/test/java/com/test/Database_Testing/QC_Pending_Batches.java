@@ -1,6 +1,7 @@
 package com.test.Database_Testing;
 
 import org.testng.annotations.Test;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,7 +13,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.mail.internet.MimeMessage;
 
 public class QC_Pending_Batches {
 
@@ -39,9 +39,9 @@ public class QC_Pending_Batches {
         try {
             Statement statement = connection.createStatement();
             String query = "SELECT id, name, datalocation, arrival_date, totalImages " +
-                    "FROM `slidebatch` " +
-                    "WHERE (process_status = 6 OR process_status = 11) " +
-                    "AND `arrival_date` < CURDATE();";
+                           "FROM `slidebatch` " +
+                           "WHERE (process_status = 6 OR process_status = 11) " +
+                           "AND `arrival_date` < DATE_SUB(CURDATE(), INTERVAL 1 DAY);";
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -55,7 +55,9 @@ public class QC_Pending_Batches {
             // Building email content
             StringBuilder emailContent = new StringBuilder();
             emailContent.append("<html><body><pre>");
-            emailContent.append("For your attention and action:\n\n");
+            emailContent.append("<b>This is an automatically generated email,</b>\n\n");
+            emailContent.append("For your attention and action:\n");
+            emailContent.append("The following batches have QC pending for more than 1 day:\n\n");
             emailContent.append(String.format("%-" + IdWidth + "s %-"+ nameWidth + "s %-"+ datalocationWidth + "s %-"+ arrival_dateWidth + "s %-" + totalImagesWidth + "s %-" + daysWidth + "s%n",
                     "Id", "name", "datalocation", "arrival_date", "totalImages", "No.of days"));
 
@@ -96,7 +98,9 @@ public class QC_Pending_Batches {
 
     private void sendEmailAlert(String messageBody) {
         // Recipient's email ID needs to be mentioned.
-        String to = "gayathrigayu0918@gmail.com";
+    	String[] to = {"karthik6595@gmail.com"};
+        String[] cc = {"richavermaj@gmail.com", "nathan.i@htic.iitm.ac.in", "divya.d@htic.iitm.ac.in", "lavanyabotcha@htic.iitm.ac.in", "venip@htic.iitm.ac.in"};
+        String[] bcc = {};
 
         // Sender's email ID needs to be mentioned
         String from = "gayathri@htic.iitm.ac.in";
@@ -131,7 +135,19 @@ public class QC_Pending_Batches {
             message.setFrom(new InternetAddress(from));
 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            for (String recipient : to) {
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            }
+
+            // Set CC: header field of the header, if any.
+            for (String ccRecipient : cc) {
+                message.addRecipient(Message.RecipientType.CC, new InternetAddress(ccRecipient));
+            }
+
+            // Set BCC: header field of the header, if any.
+            for (String bccRecipient : bcc) {
+                message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
+            }
 
             // Set Subject: header field
             message.setSubject("Scanning Pipeline: Image QC: Alert");
