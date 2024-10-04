@@ -1,27 +1,22 @@
 package com.test.Database_Testing;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.*;
+import java.util.function.Function;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import com.test.Database_Testing.Image_Out_Batches.QueryResult;
 
-public class public_currentdate_login {
- 
-    
+public class Path_Confirmation {
     class QueryResult {
         int id;
         String biosample;
@@ -96,7 +91,7 @@ public class public_currentdate_login {
                     "FROM slidebatch " +
                     "LEFT JOIN slide ON slide.slidebatch = slidebatch.id " +
                     "LEFT JOIN huron_slideinfo ON huron_slideinfo.slide = slide.id " +
-                    "WHERE slidebatch.id = " + slidebatchId;
+                    "WHERE slidebatch.id = " + slidebatchId + ";";
 
             resultSet = statement.executeQuery(query);
 
@@ -106,16 +101,13 @@ public class public_currentdate_login {
                 boolean isQC = resultSet.getBoolean("isQC");
 
                 // Extract the biosample value
-                String biosample = filename.substring(filename.indexOf("B_") + 2,
-                        filename.indexOf('_', filename.indexOf("B_") + 2));
+                String biosample = filename.substring(filename.indexOf("B_") + 2, filename.indexOf('_', filename.indexOf("B_") + 2));
 
                 // Extract the series value
-                String series = filename.substring(filename.indexOf("ST_") + 3,
-                        filename.indexOf('-', filename.indexOf("ST_") + 3));
+                String series = filename.substring(filename.indexOf("ST_") + 3, filename.indexOf('-', filename.indexOf("ST_") + 3));
 
                 // Extract the section value
-                String section = filename.substring(filename.indexOf("SE_") + 3,
-                        filename.lastIndexOf('.'));
+                String section = filename.substring(filename.indexOf("SE_") + 3, filename.lastIndexOf('.'));
 
                 queryResults.add(new QueryResult(id, biosample, series, section, filename, isQC));
             }
@@ -134,23 +126,22 @@ public class public_currentdate_login {
     }
 
     private void printQueryResults(List<QueryResult> queryResults) {
-    	
-    	 int qcTrueCount = 0;
-         int qcFalseCount = 0;
+        int qcTrueCount = 0;
+        int qcFalseCount = 0;
 
-         for (QueryResult result : queryResults) {
-             if (result.isQC) {
-                 qcTrueCount++;
-             } else {
-                 qcFalseCount++;
-             }
-         }
+        for (QueryResult result : queryResults) {
+            if (result.isQC) {
+                qcTrueCount++;
+            } else {
+                qcFalseCount++;
+            }
+        }
         System.out.println("Total no.of sections: " + queryResults.size());
-        System.out.println("Total no.of QC passed sections: " + qcTrueCount);
-        System.out.println("Total no.of QC failed sections: " + qcFalseCount);
+      //  System.out.println("Total no.of QC passed sections: " + qcTrueCount);
+      //  System.out.println("Total no.of QC failed sections: " + qcFalseCount);
         System.out.println("Query Result:");
         System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.printf("%-10s | %-10s | %-10s | %-10s | %-45s | %-10s%n", "ID", "Biosample", "Series", "Section", "Filename", "isQC");
+        System.out.printf("%-10s | %-10s | %-10s | %-10s | %-45s | %-10s%n", "ID", "Biosample", "Series", "Section","jp2path", "Filename", "isQC");
         System.out.println("--------------------------------------------------------------------------------------------------------");
         for (QueryResult result : queryResults) {
             System.out.printf("%-10d | %-10s | %-10s | %-10s | %-45s | %-10b%n", result.id, result.biosample, result.series, result.section, result.filename, result.isQC);
@@ -220,7 +211,7 @@ public class public_currentdate_login {
             }
             if (sectionStart != -1 && sectionEnd != -1) {
                 String sectionNumber = format.substring(sectionStart, sectionEnd);
-                sectionFormatsMap.putIfAbsent(sectionNumber, new HashSet<String>());
+                sectionFormatsMap.computeIfAbsent(sectionNumber, (Function<? super String, ? extends Set<String>>) new HashSet<>());
                 for (String expected : expectedFormats) {
                     if (format.endsWith(expected)) {
                         sectionFormatsMap.get(sectionNumber).add(expected);
