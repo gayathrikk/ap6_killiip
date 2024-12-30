@@ -15,7 +15,7 @@ public class Path_Validation {
 
     class QueryResult {
         int id;
-        String filename;
+        String filename;  
         String jp2Path;
         boolean isQC;
 

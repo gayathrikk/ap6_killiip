@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-07T10:00:19 IST" name="Default suite" finished-at="2024-10-07T10:00:24 IST" duration-ms="4394">
+  <suite started-at="2024-12-30T13:12:35 IST" name="Default suite" finished-at="2024-12-30T13:12:44 IST" duration-ms="8455">
     <groups>
     </groups>
-    <test started-at="2024-10-07T10:00:19 IST" name="Default test" finished-at="2024-10-07T10:00:24 IST" duration-ms="4394">
-      <class name="com.test.Database_Testing.Path_Validation">
-        <test-method signature="testDB()[pri:0, instance:com.test.Database_Testing.Path_Validation@38cee291]" started-at="2024-10-07T10:00:19 IST" name="testDB" finished-at="2024-10-07T10:00:24 IST" duration-ms="4355" status="PASS">
+    <test started-at="2024-12-30T13:12:35 IST" name="Default test" finished-at="2024-12-30T13:12:44 IST" duration-ms="8455">
+      <class name="com.test.Database_Testing.IIPSRVProcessAutomation">
+        <test-method signature="manageIIPSRVProcesses()[pri:0, instance:com.test.Database_Testing.IIPSRVProcessAutomation@45099dd3]" started-at="2024-12-30T13:12:35 IST" name="manageIIPSRVProcesses" finished-at="2024-12-30T13:12:44 IST" duration-ms="8420" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testDB -->
-      </class> <!-- com.test.Database_Testing.Path_Validation -->
+        </test-method> <!-- manageIIPSRVProcesses -->
+      </class> <!-- com.test.Database_Testing.IIPSRVProcessAutomation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
